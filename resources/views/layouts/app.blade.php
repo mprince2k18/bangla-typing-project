@@ -29,12 +29,15 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ __('Bangla Typing') }}
+                    {{ __('Bangla Typing Tutor') }}
                 </a>
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('create.paragraph') }}">{{ __('Create Paragraph') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('chapters') }}">{{ __('Chapters') }}</a>
                     </li>
                 </ul>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -108,19 +111,6 @@
 
         $('#input_area').bangla();
         $('#input_area').bangla('enable', true); // enable bangla typing
-
-
-const line1 = 'কে কানে কানে বললো'; // predefined
-const line2 = 'বললো'; // input
-console.log("Matched: " + line1.match(line2));
-
-// line1 total characters
-var line1_total_characters = line1.length;
-console.log("Line 1 total characters: " + line1_total_characters);
-
-// line2 total characters
-var line2_total_characters = line2.length;
-console.log("Line 2 total characters: " + line2_total_characters);
 
   </script>
 </body>

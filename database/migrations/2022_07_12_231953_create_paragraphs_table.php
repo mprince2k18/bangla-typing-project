@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('paragraphs', function (Blueprint $table) {
             $table->id();
+            $table->longText('chapter')->nullable();
+            $table->longText('paragraph')->nullable();
             $table->timestamps();
         });
     }

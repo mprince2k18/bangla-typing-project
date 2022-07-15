@@ -23,3 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/typing', [App\Http\Controllers\HomeController::class, 'typing'])->name('typing');
 Route::get('/create/paragraph', [App\Http\Controllers\HomeController::class, 'create_paragraph'])->name('create.paragraph');
+Route::post('/store/paragraph', [App\Http\Controllers\HomeController::class, 'store'])->name('store.paragraph');
+Route::post('/examResult/{chapter}', [App\Http\Controllers\HomeController::class, 'examResult'])->name('examResult');
+Route::get('/chapters', [App\Http\Controllers\HomeController::class, 'chapters'])->name('chapters');
+Route::get('/exam/{chapter}', [App\Http\Controllers\HomeController::class, 'exam'])->name('exam');

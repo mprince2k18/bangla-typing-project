@@ -6,12 +6,18 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('store.paragraph') }}" method="post">
+
+                    <p>
+                        {{ $chapter->paragraph }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card mt-2">
+                <div class="card-body">
+                    <form action="{{ route('examResult', $chapter->id) }}" method="post">
                         @csrf
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Chapter</label>
-                            <input type="rexr" name="chapter" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Paragraph</label>
                             <textarea id="input_area" name="paragraph" class="form-control" placeholder="Start typing...."></textarea>

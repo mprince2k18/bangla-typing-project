@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Paragraph;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,28 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function chapters()
+    {
+        $chapters = Paragraph::all();
+        return view('chapters', compact('chapters'));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function exam($chapter)
+    {
+        $chapter = Paragraph::where('id', $chapter)->first();
+        return view('exam', compact('chapter'));
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function typing()
     {
         return view('typing');
@@ -42,53 +65,71 @@ class HomeController extends Controller
      */
     public function create_paragraph()
     {
+        return view('create_paragraph');
+    }
 
-        $ban = "কে কানে কানে বললো";
+    /**
+     * Store
+     */
+    public function store(Request $request)
+    {
+        $paragraph = new Paragraph;
+        $paragraph->chapter = $request->chapter;
+        $paragraph->paragraph = $request->paragraph;
+        $paragraph->save();
+        return back();
+    }
 
+    public function examResult(Request $request, $chapter)
+    {
+
+        $which_chapter = Paragraph::where('id', $chapter)->first();
+
+        $chapter = $which_chapter->paragraph;
 
         // explode the string into an array
-        $ban_array = explode(" ", $ban);
+        $chapter_array = explode(" ", $chapter);
 
-        $ban_collection = collect();
+        $chapter_collection = collect();
 
         // loop through the array
-        foreach ($ban_array as $word) {
+        foreach ($chapter_array as $word) {
             // add a class to the word
-            $ban_collection->push($word);
+            $chapter_collection->push($word);
         }
 
         // total number of words in the paragraph
-        $total_paragraph_words = $ban_collection->count();
+        $total_paragraph_words = $chapter_collection->count();
 
-        $input = "কে";
+        $exam_data = $request->paragraph;
 
         // explode the string into an array
-        $input_array = explode(" ", $input);
+        $exam_data_array = explode(" ", $exam_data);
 
-        $input_collection = collect();
+        $exam_data_collection = collect();
 
         // loop through the array
-        foreach ($input_array as $word) {
+        foreach ($exam_data_array as $word) {
             // add a class to the word
-            $input_collection->push($word);
+            $exam_data_collection->push($word);
         }
 
         // user inputted words
-        $user_input_words = $input_collection->count();
+        $user_input_words = $exam_data_collection->count();
 
-        $diff = $ban_collection->diff($input_collection);
+        $diff = $chapter_collection->diff($exam_data_collection);
 
         $diff_array = $diff->toArray();
 
         // diff in percentage
-        $percentage = $diff->count() / $ban_collection->count() * 100;
+        $percentage = $diff->count() / $chapter_collection->count() * 100;
 
         // diff in words
         $diff_words = $diff->count();
 
         return [
-            'paragraph' => $ban_collection,
-            'user_given_paragraph' => $input_collection,
+            'paragraph' => $chapter_collection,
+            'user_given_paragraph' => $exam_data_collection,
             'diff' => $diff_array,
             'total_paragraph_words' => $total_paragraph_words,
             'diff_words' => $diff_words,
@@ -96,7 +137,6 @@ class HomeController extends Controller
             'missing_percentage' => $percentage,
             'result' => 100 - $percentage,
         ];
-
-        return view('create_paragraph');
     }
+
 }
