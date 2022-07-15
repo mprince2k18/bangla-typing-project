@@ -127,6 +127,21 @@ class HomeController extends Controller
         // diff in words
         $diff_words = $diff->count();
 
+        /**
+         * Gross WPM
+         */
+        $gross_wpm = $user_input_words / 2; // Total Words Typed / Total Time Taken (in minutes)
+
+        /**
+         * Net Speed
+         */
+        $net_speed = ($user_input_words - $diff_words) / 2; // (Total Words Typed - Word Error ) / Total Time Taken (in minutes)
+
+        /**
+         * Accuracy
+         */
+        $accuracy = ($net_speed / $gross_wpm) * 100; // (Net WPM/ Gross WPM ) * 100
+
         return [
             'paragraph' => $chapter_collection,
             'user_given_paragraph' => $exam_data_collection,
@@ -136,6 +151,9 @@ class HomeController extends Controller
             'user_input_words' => $user_input_words,
             'missing_percentage' => $percentage,
             'result' => 100 - $percentage,
+            'wpm' => $gross_wpm,
+            'net_speed' => $gross_wpm,
+            'accuracy' => $accuracy,
         ];
     }
 
