@@ -76,6 +76,7 @@ class HomeController extends Controller
         $paragraph = new Paragraph;
         $paragraph->chapter = $request->chapter;
         $paragraph->paragraph = $request->paragraph;
+        $paragraph->time = $request->time;
         $paragraph->save();
         return back();
     }

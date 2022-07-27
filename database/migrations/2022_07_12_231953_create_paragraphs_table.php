@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->longText('chapter')->nullable();
             $table->longText('paragraph')->nullable();
+            $table->longText('time')->nullable();
             $table->timestamps();
         });
     }

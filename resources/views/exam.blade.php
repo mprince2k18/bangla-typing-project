@@ -52,7 +52,8 @@
 
             <section class="mt-2">
                 <div class="justify-content-center d-flex">
-                    <h1 class="fs-1 text">00:20</h1>
+                    <h1 class="fs-1 text queue_text">The test will be start in <span id="queue_timer">5</span> seconds</h1>
+                    <h1 class="fs-1 text d-none" id="timer">00:00</h1>
                 </div>
             </section>
 
@@ -66,11 +67,11 @@
 
             <section class="mt-2">
                 <div class="container text-center m-auto">
-                    <form action="{{ route('examResult', $chapter->id) }}" method="post">
+                    <form action="{{ route('examResult', $chapter->id) }}" method="post" id="exam-form">
                         @csrf
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label fs-5 text">Start Typing From Below</label>
-                            <textarea id="input_area" name="paragraph" class="form-control" rows="7" placeholder="Start typing...."></textarea>
+                            <textarea id="input_area" disabled name="paragraph" class="form-control" rows="7" placeholder="Start typing...."></textarea>
                         </div>
                     
                         <button type="submit" class="btn btn-secondary">End Test</button>
@@ -86,6 +87,7 @@
 
         </div>
 
+        <input class="test_time" type="hidden" value="{{ $chapter->timer }}">
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -94,6 +96,58 @@
         <script>
             $('#input_area').bangla();
             $('#input_area').bangla('enable', true); // enable bangla typing
+
+            var queue_timer = 5; // queue timer
+                var queue_minutes = parseInt(queue_timer / 60, 10);
+                var queue_seconds = parseInt(queue_timer % 60, 10);
+                var queue_display = queue_minutes + ":" + queue_seconds;
+                $('#timer').text(queue_display);
+                var queue_interval = setInterval(function() {
+                    queue_seconds--;
+                    if (queue_seconds < 0) {
+                        queue_minutes--;
+                        queue_seconds = 59;
+                    }
+                    if (queue_minutes < 0) {
+                        queue_minutes = 0;
+                        queue_seconds = 0;
+                    }
+                    if (queue_minutes == 0 && queue_seconds == 0) {
+                        clearInterval(queue_interval);
+                        $('.queue_text').addClass('d-none');
+                        $('#timer').removeClass('d-none');
+                        $('#input_area').removeAttr('disabled');
+                    }
+                    var queue_display = queue_seconds;
+                    $('#queue_timer').text(queue_display);
+                }, 1000);
+
+            // start timer after 3 seconds
+
+            setTimeout(function(){
+                var timer = $('.test_time').val();
+                var minutes = parseInt(timer / 60, 10);
+                var seconds = parseInt(timer % 60, 10);
+                var display = minutes + ":" + seconds;
+                $('#timer').text(display);
+                var interval = setInterval(function() {
+                    seconds--;
+                    if (seconds < 0) {
+                        minutes--;
+                        seconds = 59;
+                    }
+                    if (minutes < 0) {
+                        minutes = 0;
+                        seconds = 0;
+                    }
+                    if (minutes == 0 && seconds == 0) {
+                        clearInterval(interval);
+                        $('#exam-form').submit();
+                    }
+                    var display = minutes + ":" + seconds;
+                    $('#timer').text(display);
+                }, 1000);
+            }, 5000);
         </script>
 
     </body>

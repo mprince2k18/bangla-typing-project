@@ -31,6 +31,24 @@
                         </div>
                     </div>
 
+                    <div class="row gy-4 mt-2">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <div class="form-control-wrap">
+
+                                    <input type="number" name="time"
+                                        class="form-control form-control-xl form-control-outlined"
+                                        id="time">
+                                        <small>Enter seconds as the exam timer</small>
+
+                                    <label class="form-label-outlined" for="time">Exam Timer
+                                    </label>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <hr class="preview-hr"><span class="preview-title-lg overline-title">Chapter Story</span>
 
                     <div class="row gy-4">
