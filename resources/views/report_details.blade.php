@@ -84,7 +84,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $report->result }}</h5>
+                        <h5 class="title">{{ numner_format($report->result, 2) }}</h5>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $report->wpm }}</h5>
+                        <h5 class="title">{{ numner_format($report->wpm, 2) }}</h5>
                     </div>
                 </div>
             </div>
