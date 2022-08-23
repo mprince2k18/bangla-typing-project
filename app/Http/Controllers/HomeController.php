@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Paragraph;
+use App\Models\Result;
 
 class HomeController extends Controller
 {
@@ -143,10 +144,23 @@ class HomeController extends Controller
          */
         $accuracy = ($net_speed / $gross_wpm) * 100; // (Net WPM/ Gross WPM ) * 100
 
-        return [
+        // store to result
+        $result = new Result;
+        $result->user_id = auth()->user()->id;
+        $result->paragraph_id = $which_chapter->id;
+        $result->user_given_paragraph = $request->paragraph;
+        $result->total_paragraph_words = $total_paragraph_words;
+        $result->diff_words = $diff_words;
+        $result->user_input_words = $user_input_words;
+        $result->percentage = $percentage;
+        $result->wpm = $gross_wpm;
+        $result->accuracy = $accuracy;
+        $result->result = 100 - $percentage;
+        $result->save();
+
+        return view('result',[
             'paragraph' => $chapter_collection,
             'user_given_paragraph' => $exam_data_collection,
-            'diff' => $diff_array,
             'total_paragraph_words' => $total_paragraph_words,
             'diff_words' => $diff_words,
             'user_input_words' => $user_input_words,
@@ -155,7 +169,7 @@ class HomeController extends Controller
             'wpm' => $gross_wpm,
             'net_speed' => $gross_wpm,
             'accuracy' => $accuracy,
-        ];
+        ]);
     }
 
 }

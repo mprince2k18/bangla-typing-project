@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
         content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
-    <link rel="shortcut icon" href="@backend(images/favicon.png)">
+    <link rel="shortcut icon" href="{{ asset('backend/images/favicon.png') }}">
     <title>Login | {{ env('APP_NAME') }}</title>
-    <link rel="stylesheet" href="@backend(assets/css/dashlite.css)">
-    <link id="skin-default" rel="stylesheet" href="@backend(assets/css/theme.css)">
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/dashlite.css') }}">
+    <link id="skin-default" rel="stylesheet" href="{{ asset('backend/assets/css/theme.css') }}">
 
 </head>
 

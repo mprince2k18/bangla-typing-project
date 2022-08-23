@@ -2,10 +2,10 @@
     <div class="nk-apps-brand">
         <a href="{{ route('home') }}" class="logo-link">
             <img class="logo-light logo-img"
-                src="@backend(images/logo-small.png)" srcset="@backend(demo3/images/logo-small2x.png) 2x" alt="logo">
+                src="{{ asset('backend/images/logo-small.png') }}" srcset="{{ asset('backend/demo3/images/logo-small2x.png') }} 2x" alt="logo">
             <img
             class="logo-dark logo-img" src="../images/logo-dark-small.png"
-            srcset="@backend(demo3/images/logo-dark-small2x.png) 2x" alt="logo-dark">
+            srcset="{{ asset('backend/demo3/images/logo-dark-small2x.png') }} 2x" alt="logo-dark">
         </a>
     </div>
     <div class="nk-sidebar-element">

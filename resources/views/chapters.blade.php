@@ -28,7 +28,7 @@
                         @forelse($chapters as $chapter)
                             <tr>
                                 <td>{{ $chapter->chapter }}</td>
-                                <td>{{ $chapter->timer }}s</td>
+                                <td>{{ $chapter->time }}s</td>
                                 <td>
                                     {{ $chapter->paragraph }}
                                 </td>
