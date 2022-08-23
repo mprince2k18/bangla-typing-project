@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paragraph;
 use App\Models\Result;
+use App\Models\ExamRanking;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -156,7 +158,37 @@ class HomeController extends Controller
         $result->wpm = $gross_wpm;
         $result->accuracy = $accuracy;
         $result->result = 100 - $percentage;
-        $result->save();
+
+        if ($result->save()) {
+            $check_todays_result = ExamRanking::where('user_id', auth()->user()->id)->first();
+            if ($check_todays_result) {
+                if ($check_todays_result->result < $result->result) {
+                    $check_todays_result->paragraph_id = $result->paragraph_id;
+                    $check_todays_result->user_given_paragraph = $result->user_given_paragraph;
+                    $check_todays_result->total_paragraph_words = $result->total_paragraph_words;
+                    $check_todays_result->diff_words = $result->diff_words;
+                    $check_todays_result->user_input_words = $result->user_input_words;
+                    $check_todays_result->percentage = $result->percentage;
+                    $check_todays_result->wpm = $result->wpm;
+                    $check_todays_result->accuracy = $result->accuracy;
+                    $check_todays_result->result = $result->result;
+                    $check_todays_result->save();
+                }
+            }else {
+                $exam_rank = new ExamRanking;
+                $exam_rank->user_id = $result->user_id;
+                $exam_rank->paragraph_id = $result->paragraph_id;
+                $exam_rank->user_given_paragraph = $result->user_given_paragraph;
+                $exam_rank->total_paragraph_words = $result->total_paragraph_words;
+                $exam_rank->diff_words = $result->diff_words;
+                $exam_rank->user_input_words = $result->user_input_words;
+                $exam_rank->percentage = $result->percentage;
+                $exam_rank->wpm = $result->wpm;
+                $exam_rank->accuracy = $result->accuracy;
+                $exam_rank->result = $result->result;
+                $exam_rank->save();
+            }
+        }
 
         return view('result',[
             'paragraph' => $chapter_collection,
@@ -171,5 +203,29 @@ class HomeController extends Controller
             'accuracy' => $accuracy,
         ]);
     }
+
+    public function report()
+    {
+        $reports = Result::where('user_id', Auth::id())->get();
+        return view('report', compact('reports'));
+    }
+
+    public function details($id)
+    {
+        $report = Result::where('id', $id)->first();
+        return view('report_details', compact('report'));
+    }
+
+    public function ranking_chapter_based($chapter_id)
+    {
+        $rank = ExamRanking::where('paragraph_id', $chapter_id)
+                            ->select('id', 'user_id', 'result', 'wpm', 'accuracy', 'percentage', 'paragraph_id')
+                            ->orderBy('result', 'desc')
+                            ->get()
+                            ->take(20);
+        return view('ranking_chapter_based', compact('rank'));
+    }
+
+    //ENDS
 
 }

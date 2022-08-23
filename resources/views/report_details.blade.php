@@ -16,7 +16,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $total_paragraph_words }}</h5>
+                        <h5 class="title">{{ $report->total_paragraph_words }}</h5>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $diff_words }}</h5>
+                        <h5 class="title">{{ $report->diff_words }}</h5>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $user_input_words }}</h5>
+                        <h5 class="title">{{ $report->user_input_words }}</h5>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $missing_percentage }}</h5>
+                        <h5 class="title">{{ $report->missing_percentage }}</h5>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $result }}</h5>
+                        <h5 class="title">{{ $report->result }}</h5>
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $wpm }}</h5>
+                        <h5 class="title">{{ $report->wpm }}</h5>
                     </div>
                 </div>
             </div>
@@ -118,7 +118,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $net_speed }}</h5>
+                        <h5 class="title">{{ $report->net_speed }}</h5>
                     </div>
                 </div>
             </div>
@@ -135,7 +135,7 @@
             <div class="row g-gs">
                 <div class="col-xxl-12 col-xl-12 col-md-12 col-12">
                     <div class="fake-class">
-                        <h5 class="title">{{ $accuracy }}</h5>
+                        <h5 class="title">{{ $report->accuracy }}</h5>
                     </div>
                 </div>
             </div>

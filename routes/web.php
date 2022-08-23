@@ -27,3 +27,8 @@ Route::post('/store/paragraph', [App\Http\Controllers\HomeController::class, 'st
 Route::post('/examResult/{chapter}', [App\Http\Controllers\HomeController::class, 'examResult'])->name('examResult');
 Route::get('/chapters', [App\Http\Controllers\HomeController::class, 'chapters'])->name('chapters');
 Route::get('/exam/{chapter}', [App\Http\Controllers\HomeController::class, 'exam'])->name('exam');
+
+Route::get('/report', [App\Http\Controllers\HomeController::class, 'report'])->name('report');
+Route::get('/report/details/{id}', [App\Http\Controllers\HomeController::class, 'details'])->name('details');
+
+Route::get('/ranking/{chapter_id}', [App\Http\Controllers\HomeController::class, 'ranking_chapter_based'])->name('ranking.chapter.based');

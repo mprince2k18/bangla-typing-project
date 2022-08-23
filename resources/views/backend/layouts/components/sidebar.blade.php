@@ -24,6 +24,16 @@
 
                         <li class="nk-menu-hr"></li>
 
+                        <li class="nk-menu-item">
+                            <a href="{{ route('report') }}" class="nk-menu-link" title="report">
+                                <span class="nk-menu-icon">
+                                    <em class="icon ni ni-property-alt"></em>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="nk-menu-hr"></li>
+
                     </ul>
                 </div>
 

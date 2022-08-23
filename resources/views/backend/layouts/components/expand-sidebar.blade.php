@@ -5,11 +5,20 @@
             @if (request()->routeIs('home'))
 
             <li class="nk-menu-item">
-                <a href="index.html" class="nk-menu-link">
+                <a href="{{ route('home') }}" class="nk-menu-link">
                     <span class="nk-menu-icon">
                         <em class="icon ni ni-dashboard"></em>
                     </span>
                     <span class="nk-menu-text">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nk-menu-item">
+                <a href="{{ route('report') }}" class="nk-menu-link">
+                    <span class="nk-menu-icon">
+                        <em class="icon ni ni-property-alt"></em>
+                    </span>
+                    <span class="nk-menu-text">Report</span>
                 </a>
             </li>
                 
