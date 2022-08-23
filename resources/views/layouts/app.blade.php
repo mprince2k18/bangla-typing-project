@@ -112,6 +112,8 @@
         $('#input_area').bangla();
         $('#input_area').bangla('enable', true); // enable bangla typing
 
+
+
   </script>
 </body>
 </html>

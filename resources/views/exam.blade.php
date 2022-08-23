@@ -14,6 +14,13 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+
+            .disable-text-selection {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
         </style>
     </head>
     <body class="antialiased">
@@ -28,11 +35,7 @@
                     <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Ranking</a>
-                        </li>
-                    </ul>
+                    
                     <span class="navbar-text">
                        @if (Route::has('login'))
                             @auth
@@ -59,7 +62,13 @@
 
             <section class="mt-2">
                 <div class="container justify-content-center d-flex">
-                    <h5 class="fs-5 text text-center">
+                    <h5 class="fs-5 text text-center disable-text-selection"
+                    onselectstart="return false"
+                            oncut="return false"
+                            oncopy="return false"
+                            onpaste="return false"
+                            ondrag="return false"
+                            ondrop="return false">
                         {{ $chapter->paragraph }}
                     </h5>
                 </div>
@@ -71,7 +80,12 @@
                         @csrf
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label fs-5 text">Start Typing From Below</label>
-                            <textarea id="input_area" disabled name="paragraph" class="form-control" rows="7" placeholder="Start typing...."></textarea>
+                            <textarea id="input_area" disabled name="paragraph" class="form-control" rows="7" placeholder="Start typing...."
+                            oncut="return false"
+                            oncopy="return false"
+                            onpaste="return false"
+                            ondrag="return false"
+                            ondrop="return false"></textarea>
                         </div>
                     
                         <button type="submit" class="btn btn-secondary">End Test</button>
@@ -148,6 +162,43 @@
                     $('#timer').text(display);
                 }, 1000);
             }, 5000);
+        </script>
+
+        <script>
+                    // take body to change the content
+const body = document.getElementsByTagName('body');
+// stop keyboard shortcuts
+window.addEventListener("keydown", (event) => {
+  if(event.ctrlKey && (event.key === "S" || event.key === "s")) {
+     event.preventDefault();
+     
+  }
+
+  if(event.ctrlKey && (event.key === "C")) {
+     event.preventDefault();
+     body[0].innerHTML = "sorry, you can't do this 💔"
+  }
+  if(event.ctrlKey && (event.key === "E" || event.key === "e")) {
+     event.preventDefault();
+     body[0].innerHTML = "sorry, you can't do this 💔"
+  }
+  if(event.ctrlKey && (event.key === "I" || event.key === "i")) {
+     event.preventDefault();
+     body[0].innerHTML = "sorry, you can't do this 💔";
+  }
+  if(event.ctrlKey && (event.key === "K" || event.key === "k")) {
+     event.preventDefault();
+     body[0].innerHTML = "sorry, you can't do this 💔";
+  }
+  if(event.ctrlKey && (event.key === "U" || event.key === "u")) {
+     event.preventDefault();
+     body[0].innerHTML = "sorry, you can't do this 💔";
+  }
+});
+// stop right click
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
         </script>
 
     </body>
