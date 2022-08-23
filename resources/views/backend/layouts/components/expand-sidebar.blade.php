@@ -24,8 +24,6 @@
                 
             @endif
 
-            @if (request()->routeIs('chapters') || request()->routeIs('create.paragraph'))
-
             <li class="nk-menu-item">
                 <a href="{{ route('chapters') }}" class="nk-menu-link">
                     <span class="nk-menu-icon">
@@ -48,7 +46,6 @@
 
             @endcan
                 
-            @endif
          
             
         </ul>

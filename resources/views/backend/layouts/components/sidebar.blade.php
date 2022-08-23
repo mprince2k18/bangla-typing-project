@@ -37,17 +37,6 @@
                     </ul>
                 </div>
 
-                <div class="nk-sidebar-footer">
-                    <ul class="nk-menu nk-menu-md">
-                        <li class="nk-menu-item">
-                            <a href="javascript:;" class="nk-menu-link" title="Settings">
-                                <span class="nk-menu-icon">
-                                    <em class="icon ni ni-setting"></em>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
 
             <div class="nk-sidebar-profile nk-sidebar-profile-fixed dropdown">

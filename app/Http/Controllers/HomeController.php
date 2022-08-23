@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Paragraph;
 use App\Models\Result;
 use App\Models\ExamRanking;
+use App\Models\User;
 use Auth;
 
 class HomeController extends Controller
@@ -27,7 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $participants = User::count();
+        $chapters = Paragraph::all();
+        $total_exam = Result::count();
+        return view('home', compact('chapters', 'participants', 'total_exam'));
     }
 
     /**
@@ -37,6 +41,7 @@ class HomeController extends Controller
      */
     public function chapters()
     {
+        
         $chapters = Paragraph::all();
         return view('chapters', compact('chapters'));
     }
@@ -190,18 +195,7 @@ class HomeController extends Controller
             }
         }
 
-        return view('result',[
-            'paragraph' => $chapter_collection,
-            'user_given_paragraph' => $exam_data_collection,
-            'total_paragraph_words' => $total_paragraph_words,
-            'diff_words' => $diff_words,
-            'user_input_words' => $user_input_words,
-            'missing_percentage' => $percentage,
-            'result' => 100 - $percentage,
-            'wpm' => $gross_wpm,
-            'net_speed' => $gross_wpm,
-            'accuracy' => $accuracy,
-        ]);
+        return $this->details($result->id);
     }
 
     public function report()
