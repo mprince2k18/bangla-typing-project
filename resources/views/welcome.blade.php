@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Softland</title>
+    <title>Bangla Typing Tutor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
     <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
@@ -25,7 +25,7 @@
             <div class="container">
                 <!-- LOGO -->
                 <a class="navbar-brand logo text-uppercase" href="index.html">
-                    <img src="images/logo-dark.png" alt="" height="22" />
+                    <img src="images/logo-dark.png" alt=""/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,9 +64,8 @@
         <div class="container">
             <div class="row justify-content-center pt-5 mt-5">
                 <div class="col-lg-8 text-center">
-                    <h1 class="home-title">Innovate Solution For Your Business <br> By Digital Marketing</h1>
-                    <p class="pt-4 f-15 text-muted">A digital web design studio creating modern & engaging online.
-                        Separated they live in Bookmarksgrove right the Semantics, a large language ocean.</p>
+                    <h1 class="home-title">Bangla Typing Tutor <br> <span style="font-size: 32px;">By Tasnia Anjum & Showvik Mondal Ovi</span></h1>
+                    <p class="pt-4 f-15 text-muted">Bengali typing tutor will have everyone learn to type in Bengali fast with Bengali keyboard layouts if everyone would like to learn and practice typing in Bengali</p>
                     <div class="mt-5 pt-5">
                         <img src="{{ asset('images/features/img-1.png') }}" class="img-fluid" alt="">
                     </div>
@@ -83,7 +82,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="title-box text-center">
-                        <h3>More than <span class="text-primary">46,000+</span> companies trust socialup</h3>
+                        <h3>More than <span class="text-primary">460+</span> participants trust us</h3>
                         <p class="text-muted mt-3">In an ideal world this website wouldn’t exist, a client would
                             acknowledge the importance having web copy before
                             finibus semper design starts.</p>
@@ -135,7 +134,7 @@
                 <div class="col-lg-7">
                     <div class="title-box text-center">
                         <h5 class="sub-title text-primary f-13 text-uppercase">Best Services</h5>
-                        <h3 class="mt-2">Want you to boost your business growth? solution is here.</h3>
+                        <h3 class="mt-2">Want you to boost your typing skill?? solution is here.</h3>
                     </div>
                 </div>
             </div>
@@ -147,10 +146,9 @@
                             <i class="uim uim-cube"></i>
                         </div>
 
-                        <h5 class="f-20 mt-4 pt-2">Digital Design</h5>
+                        <h5 class="f-20 mt-4 pt-2">Time tracking</h5>
 
-                        <p class="text-muted mt-3 mb-0">Some quick example text to build on the card title and bulk of
-                            the card's content Moltin gives you the platform.</p>
+                        <p class="text-muted mt-3 mb-0">How much time the user spends on typing will be tracked.</p>
 
                     </div>
                 </div>
@@ -161,10 +159,9 @@
                             <i class="uim uim-layer-group"></i>
                         </div>
 
-                        <h5 class="f-20 mt-4 pt-2">Strategy Solutions</h5>
+                        <h5 class="f-20 mt-4 pt-2">Ranking</h5>
 
-                        <p class="text-muted mt-3 mb-0">Separated they live in Bookmark sgrove right at the coast of the
-                            Semtics langu ocean necessary regelialia.</p>
+                        <p class="text-muted mt-3 mb-0">Thus at the end of each chapter will be done rbased on time and speed.Then total results are ranked</p>
 
                     </div>
                 </div>
@@ -175,10 +172,9 @@
                             <i class="uim uim-briefcase"></i>
                         </div>
 
-                        <h5 class="f-20 mt-4 pt-2">Awesome Support</h5>
+                        <h5 class="f-20 mt-4 pt-2">Exam Reports</h5>
 
-                        <p class="text-muted mt-3 mb-0">It is a paradisematic country, in which roasted parts of
-                            sentences fly into your mouth leave for the far World.</p>
+                        <p class="text-muted mt-3 mb-0">Here various chapter wise tests are conducted to improve typing skills</p>
 
                     </div>
                 </div>
@@ -188,7 +184,7 @@
             <div class="row mt-5 pt-4 align-items-center">
                 <div class="col-lg-6">
                     <div class="mt-4">
-                        <h3>We are trusted by <span class="text-primary">580+</span> big & small business Softland</h3>
+                        <h3>We are trusted by <span class="text-primary">580+</span> participants</h3>
 
                         <p class="text-muted mt-4">Separated they live in Bookmarksgrove right at the coast of the
                             Semantics large language ocean.
@@ -199,14 +195,14 @@
                             <div class="col-md-6">
                                 <div class="mt-4">
                                     <h3>1535+</h3>
-                                    <h5 class="text-primary mb-0 f-16">Project Complete</h5>
+                                    <h5 class="text-primary mb-0 f-16">Exam Complete</h5>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="mt-4">
                                     <h3>530+</h3>
-                                    <h5 class="text-primary mb-0 f-16">Project Running</h5>
+                                    <h5 class="text-primary mb-0 f-16">Total Participants</h5>
                                 </div>
                             </div>
                         </div>
@@ -321,7 +317,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p class="text-center text-muted mb-0 f-15">
-                        2022 © <b>Bangla Typing Test</b>. Developed by <b>Tasnia Anjum Mumu</b>
+                        {{ Carbon\Carbon::now()->year }} © <b>Bangla Typing Tutor</b>. Developed by <b>Tasnia Anjum Mumu & Showvik Mondal Ovi</b>
                     </p>
 
                 </div>
